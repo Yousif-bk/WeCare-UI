@@ -1,1 +1,56 @@
-<p>sign-in works!</p>
+<main id="content" role="main" class="main">
+  <div class="position-fixed top-0 end-0 start-0 bg-img-start"
+    style="height: 32rem; background-image: url(../../../../assets/svg/card-6.svg);">
+  </div>
+
+  <!-- Content -->
+  <div class="container py-5 py-sm-7">
+    <a class="d-flex justify-content-center mb-5" href="index.html">
+      <img class="zi-2" src="../../../../assets/svg/card-6.svg" alt="Image Description" style="width: 8rem;">
+    </a>
+
+    <div class="mx-auto" style="max-width: 30rem;">
+      <!-- Card -->
+      <div class="card card-lg mb-5">
+        <div class="card-body">
+          <!-- Form -->
+          <form class="js-validate needs-validation" novalidate>
+            <div class="text-center">
+              <div class="mb-5">
+                <h1 class="display-5">Sign in</h1>
+                <p>Don't have an account yet? <a class="link" [routerLink]="'/auth/sign-up'">Sign up here</a></p>
+              </div>
+
+              <span class="divider-center text-muted mb-4">OR</span>
+            </div>
+
+            <!-- Form -->
+            <div class="mb-4">
+              <label class="form-label" for="signupSrEmail">Your email</label>
+              <input type="email" class="form-control form-control-lg" placeholder="Markwilliams@site.com">
+            </div>
+            <!-- End Form -->
+
+            <!-- Form -->
+            <div class="mb-4">
+              <label class="form-label" for="signupSrPassword">Password</label>
+              <div class="input-group input-group-merge">
+                <input type="password" class="form-control form-control-lg" placeholder="8+ characters required">
+              </div>
+            </div>
+            <!-- End Form -->
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
+
+            </div>
+          </form>
+          <!-- End Form -->
+        </div>
+      </div>
+      <!-- End Card -->
+
+    </div>
+  </div>
+  <!-- End Content -->
+</main>
