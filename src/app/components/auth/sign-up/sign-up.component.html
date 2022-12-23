@@ -1,29 +1,28 @@
 <main id="content" role="main" class="main">
-  <div class="position-fixed top-0 end-0 start-0 bg-img-start"
-    style="height: 32rem; background-image: url(../../../../assets/svg/card-6.svg);">
+  <div class="position-fixed top-0 end-0 start-0 bg-img-start" style="height: 100%; background-color: aliceblue;">
   </div>
 
   <!-- Content -->
   <div class="container py-5 py-sm-7">
     <a class="d-flex justify-content-center mb-5">
-      <img class="zi-2"  alt="Image Description" style="width: 8rem;">
+      <img class="zi-2" alt="Image Description" style="width: 8rem;">
     </a>
 
     <div class="mx-auto" style="max-width: 30rem;">
       <!-- Card -->
       <div class="card card-lg mb-5">
         <div class="card-body">
-          <!-- Form -->
-          <form>
-            <div class="text-center">
-              <div class="mb-5">
-                <h1 class="display-5">Create your account</h1>
-                <p>Already have an account? <a class="link" [routerLink]="'/auth/sign-in'">Sign in here</a></p>
-              </div>
 
-              <span class="divider-center text-muted mb-4">OR</span>
+          <div class="text-center">
+            <div class="mb-5">
+              <h1 class="display-5">Create your account</h1>
+              <p>Already have an account? <a class="link" [routerLink]="'/auth/sign-in'">Sign in here</a></p>
             </div>
 
+            <span class="divider-center text-muted mb-4">OR</span>
+          </div>
+          <!-- Form -->
+          <form [formGroup]="signUpFormGroup">
             <label class="form-label" for="fullNameSrEmail">Full name</label>
 
             <!-- Form -->
@@ -31,8 +30,14 @@
               <div class="col-sm-6">
                 <!-- Form -->
                 <div class="mb-4">
-                  <input type="text" class="form-control form-control-lg" name="fullName" placeholder="Mark">
+                  <input type="text" class="form-control form-control-lg" formControlName="firstName"
+                    placeholder="Mark">
                   <span class="invalid-feedback">Please enter your first name.</span>
+                  <div class="v-message"
+                    *ngIf="(uiState.isSubmitting && signUpFormGroup.get('firstName')?.hasError('required')
+                  || signUpFormGroup.get('firstName')?.touched && signUpFormGroup.get('firstName')?.hasError('required'))">
+                    <span> First Name is <strong>required</strong></span>
+                  </div>
                 </div>
                 <!-- End Form -->
               </div>
@@ -40,8 +45,13 @@
               <div class="col-sm-6">
                 <!-- Form -->
                 <div class="mb-4">
-                  <input type="text" class="form-control form-control-lg" placeholder="Williams">
-                  <span class="invalid-feedback">Please enter your last name.</span>
+                  <input type="text" class="form-control form-control-lg" formControlName="lastName"
+                    placeholder="Williams">
+                  <div class="v-message"
+                    *ngIf="(uiState.isSubmitting && signUpFormGroup.get('lastName')?.hasError('required')
+                  || signUpFormGroup.get('lastName')?.touched && signUpFormGroup.get('lastName')?.hasError('required'))">
+                    <span> Last Name is <strong>required</strong></span>
+                  </div>
                 </div>
                 <!-- End Form -->
               </div>
@@ -51,8 +61,16 @@
             <!-- Form -->
             <div class="mb-4">
               <label class="form-label" for="signupSrEmail">Your email</label>
-              <input type="email" class="form-control form-control-lg" placeholder="Markwilliams@site.com">
-              <span class="invalid-feedback">Please enter a valid email address.</span>
+              <input type="email" class="form-control form-control-lg" formControlName="email"
+                placeholder="Markwilliams@site.com">
+              <div class="v-message" *ngIf="(uiState.isSubmitting && signUpFormGroup.get('email')?.hasError('required')
+              || signUpFormGroup.get('email')?.touched && signUpFormGroup.get('email')?.hasError('required'))">
+                <span> Email is <strong>required</strong></span>
+              </div>
+              <span *ngIf="uiState.isSubmitting && signUpFormGroup.get('email')?.hasError('pattern')  ||
+            signUpFormGroup.get('email')?.touched && signUpFormGroup.get('email')?.hasError('pattern') ">
+                <span class="v-message">Please enter a valid <strong>email address</strong></span>
+              </span>
             </div>
             <!-- End Form -->
 
@@ -61,10 +79,13 @@
               <label class="form-label" for="signupSrPassword">Password</label>
 
               <div class="input-group input-group-merge">
-                <input type="password" class="form-control form-control-lg" placeholder="8+ characters required">
+                <input type="password" class="form-control form-control-lg" formControlName="password"
+                  placeholder="8+ characters required">
               </div>
-
-              <span class="invalid-feedback">Your password is invalid. Please try again.</span>
+              <div class="v-message" *ngIf="(uiState.isSubmitting && signUpFormGroup.get('password')?.hasError('required')
+              || signUpFormGroup.get('password')?.touched && signUpFormGroup.get('password')?.hasError('required'))">
+                <span> Last Name is <strong>required</strong></span>
+              </div>
             </div>
             <!-- End Form -->
 
@@ -72,16 +93,21 @@
             <div class="mb-4">
               <label class="form-label" for="signupSrConfirmPassword">Confirm password</label>
               <div class="input-group input-group-merge">
-                <input type="password" class="form-control form-control-lg" placeholder="8+ characters required">
+                <input type="password" class="form-control form-control-lg" formControlName="confirmPassword"
+                  placeholder="8+ characters required">
               </div>
 
               <span class="invalid-feedback">Password does not match the confirm password.</span>
             </div>
             <!-- End Form -->
 
-            <div class="d-grid gap-2">
-              <button type="submit" class="btn btn-primary btn-lg">Create an account</button>
-
+            <div class="d-grid" [class.grid]="uiState.isLoading">
+              <button type="submit" [disabled]="uiState.isLoading" (click)="signUp()" class="btn btn-primary btn-lg">
+                <div *ngIf="uiState.isLoading" class="spinner-grow spinner-grow-sm">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <span *ngIf="!uiState.isLoading">Sign up</span>
+              </button>
             </div>
           </form>
           <!-- End Form -->

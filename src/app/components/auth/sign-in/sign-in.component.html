@@ -1,6 +1,6 @@
 <main id="content" role="main" class="main">
   <div class="position-fixed top-0 end-0 start-0 bg-img-start"
-    style="height: 32rem; background-image: url(../../../../assets/svg/card-6.svg);">
+    style="height: 100%; background-color: aliceblue;">
   </div>
 
   <!-- Content -->
@@ -14,20 +14,29 @@
       <div class="card card-lg mb-5">
         <div class="card-body">
           <!-- Form -->
-          <form class="js-validate needs-validation" novalidate>
-            <div class="text-center">
-              <div class="mb-5">
-                <h1 class="display-5">Sign in</h1>
-                <p>Don't have an account yet? <a class="link" [routerLink]="'/auth/sign-up'">Sign up here</a></p>
-              </div>
-
-              <span class="divider-center text-muted mb-4">OR</span>
+          <div class="text-center">
+            <div class="mb-5">
+              <h1 class="display-5">Sign in</h1>
+              <p>Don't have an account yet? <a class="link" [routerLink]="'/auth/sign-up'">Sign up here</a></p>
             </div>
+
+            <span class="divider-center text-muted mb-4">OR</span>
+          </div>
+          <form [formGroup]="signInFormGroup">
 
             <!-- Form -->
             <div class="mb-4">
               <label class="form-label" for="signupSrEmail">Your email</label>
-              <input type="email" class="form-control form-control-lg" placeholder="Markwilliams@site.com">
+              <input type="email" formControlName="email" class="form-control form-control-lg"
+                placeholder="Markwilliams@site.com">
+              <div class="v-message" *ngIf="(uiState.isSubmitting && signInFormGroup.get('email')?.hasError('required')
+                || signInFormGroup.get('email')?.touched && signInFormGroup.get('email')?.hasError('required'))">
+                <span> Email is <strong>required</strong></span>
+              </div>
+              <span *ngIf="uiState.isSubmitting && signInFormGroup.get('email')?.hasError('pattern')  ||
+                 signInFormGroup.get('email')?.touched && signInFormGroup.get('email')?.hasError('pattern') ">
+                <span class="v-message">Please enter a valid <strong>email address</strong></span>
+              </span>
             </div>
             <!-- End Form -->
 
@@ -35,14 +44,24 @@
             <div class="mb-4">
               <label class="form-label" for="signupSrPassword">Password</label>
               <div class="input-group input-group-merge">
-                <input type="password" class="form-control form-control-lg" placeholder="8+ characters required">
+                <input type="password" formControlName="password" class="form-control form-control-lg"
+                  placeholder="8+ characters required">
+              </div>
+              <div class="v-message"
+                *ngIf="(uiState.isSubmitting && signInFormGroup.get('password')?.hasError('required')
+                 || signInFormGroup.get('password')?.touched && signInFormGroup.get('password')?.hasError('required'))">
+                <span> Password is <strong>required</strong></span>
               </div>
             </div>
             <!-- End Form -->
 
-            <div class="d-grid gap-2">
-              <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
-
+            <div class="d-grid" [class.grid]="uiState.isLoading">
+              <button type="submit" [disabled]="uiState.isLoading" (click)="signIn()" class="btn btn-primary btn-lg">
+                <div *ngIf="uiState.isLoading" class="spinner-grow spinner-grow-sm">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <span *ngIf="!uiState.isLoading">Sign in</span>
+              </button>
             </div>
           </form>
           <!-- End Form -->
