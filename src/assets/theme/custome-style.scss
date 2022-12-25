@@ -1,3 +1,11 @@
+.container-fluid {
+  padding-left: 4rem 2rem;
+  padding-right: 4rem 2rem;
+}
+.content{
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+}
 .card {
   position: relative;
   display: -ms-flexbox;
@@ -10,6 +18,21 @@
   background-clip: border-box;
   border: .0625rem solid rgba(231, 234, 243, .7);
   border-radius: .75rem
+}
+
+.card-header {
+  padding: 1.3125rem 1.3125rem;
+  margin-bottom: 0;
+  background-color: transparent;
+  border-bottom: .0625rem solid rgba(231, 234, 243, .7)
+}
+
+.card-header-title {
+  margin-bottom: 0
+}
+
+.card-header-title+.card-text {
+  margin-top: .25rem
 }
 
 .card-body {
@@ -73,13 +96,37 @@
   text-decoration: none;
 }
 
-.card-body {
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  padding: 1.3125rem 1.3125rem
-}
-
 .bg-dark {
   background-color: #132144 !important;
 }
 
+.btn-ghost-light {
+  color: #f9fafc;
+  background-color: transparent;
+}
+
+.btn-ghost-danger {
+  color: #ed4c78;
+  background-color: transparent;
+}
+.btn-white {
+  background-color: #fff;
+  border-color: rgba(231,234,243,.7);
+}
+
+.btn-white:hover{
+  color: #1366ff;
+  box-shadow: 0 3px 6px -2px rgb(140 152 164 / 25%);
+}
+.alert{
+  transition: all 1s ease 5s;
+}
+@keyframes alerttt {
+  from { display: block; opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes alerttt {
+ from { opacity: 1; }
+ to { opacity: 0; display: none; }
+}

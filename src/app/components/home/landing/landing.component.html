@@ -1,1 +1,55 @@
-<p>landing works!</p>
+<div class="content container-fluid">
+
+    <div class="d-flex justify-content-center">
+
+        <div class="col-lg-8">
+            <div class="card shadow-sm animated flipInX delay-02">
+                <div class="card-header">
+                    <div class="card-header-title">Product information</div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>Tes</label>
+                            <div class="mb-4">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Tes</label>
+                            <div class="mb-4">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="d-flex justify-content-end gap-3">
+                            <button type="button" class="btn btn-white">Save</button>
+                            <button type="button" (click)="save()" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isAlertVisiable" class="alerttt position-fixed start-50 bottom-0 translate-middle-x w-100 zi-99 mb-3" style="max-width: 40rem;">
+    <div class="card card-sm bg-dark border-dark mx-2">
+        <div class="card-body">
+            <div class="row justify-content-center justify-content-sm-between">
+                <div class="col">
+                    <i class="bi bi-info-circle text-white "></i>
+                </div>
+                <div class="col-auto">
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-ghost-light">Discard</button>
+                        <div class="btn btn-primary">Save</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
