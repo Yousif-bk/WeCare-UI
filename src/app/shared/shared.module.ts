@@ -4,6 +4,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PathNotFoundComponent } from './components/path-not-found/path-not-found.component';
 import { RouterModule } from '@angular/router';
+import { MessageAlertComponent } from './components/message-alert/message-alert.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 
@@ -11,7 +13,9 @@ import { RouterModule } from '@angular/router';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    PathNotFoundComponent
+    PathNotFoundComponent,
+    MessageAlertComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +23,9 @@ import { RouterModule } from '@angular/router';
   ],
   exports:[
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MessageAlertComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule { }
