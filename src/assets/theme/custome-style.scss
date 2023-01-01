@@ -121,6 +121,22 @@
 .alert{
   transition: all 1s ease 5s;
 }
+
+.table {
+  --bs-table-bg: transparent;
+  --bs-table-accent-bg: transparent;
+  --bs-table-striped-color: #677788;
+  --bs-table-striped-bg: #f9fafc;
+  --bs-table-active-color: #677788;
+  --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+  --bs-table-hover-color: #677788;
+  --bs-table-hover-bg: rgba(231, 234, 243, 0.4);
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #677788;
+  vertical-align: top;
+  border-color: rgba(231, 234, 243, .7)
+}
 @keyframes alerttt {
   from { display: block; opacity: 0; }
   to { opacity: 1; }

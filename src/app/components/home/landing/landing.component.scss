@@ -1,0 +1,27 @@
+@media (min-width:768px) {
+  .card-header-content-md-between {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -ms-flex-align: center;
+      align-items: center;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      gap: .5rem
+  }
+}
+.thead-light{
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.thead-light th {
+  background-color: #f8fafd
+}
+.table-thead-bordered{
+  border-top: .0625rem solid rgba(231, 234, 243, .7)
+}
+.table-nowrap td,
+.table-nowrap th {
+    white-space: nowrap
+}
