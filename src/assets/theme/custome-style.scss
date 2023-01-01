@@ -2,10 +2,12 @@
   padding-left: 4rem 2rem;
   padding-right: 4rem 2rem;
 }
-.content{
+
+.content {
   padding-top: 1.75rem;
   padding-bottom: 1.75rem;
 }
+// Card
 .card {
   position: relative;
   display: -ms-flexbox;
@@ -40,7 +42,9 @@
   flex: 1 1 auto;
   padding: 1.3125rem 1.3125rem
 }
+// End Card
 
+// Form Control
 .form-control {
   display: block;
   width: 100%;
@@ -100,6 +104,7 @@
   background-color: #132144 !important;
 }
 
+// Button
 .btn-ghost-light {
   color: #f9fafc;
   background-color: transparent;
@@ -109,40 +114,103 @@
   color: #ed4c78;
   background-color: transparent;
 }
+
 .btn-white {
   background-color: #fff;
-  border-color: rgba(231,234,243,.7);
+  border-color: rgba(231, 234, 243, .7);
 }
 
-.btn-white:hover{
+.btn-white:hover {
   color: #1366ff;
   box-shadow: 0 3px 6px -2px rgb(140 152 164 / 25%);
 }
-.alert{
+
+// Alert
+.alert {
   transition: all 1s ease 5s;
 }
 
-.table {
-  --bs-table-bg: transparent;
-  --bs-table-accent-bg: transparent;
-  --bs-table-striped-color: #677788;
-  --bs-table-striped-bg: #f9fafc;
-  --bs-table-active-color: #677788;
-  --bs-table-active-bg: rgba(0, 0, 0, 0.1);
-  --bs-table-hover-color: #677788;
-  --bs-table-hover-bg: rgba(231, 234, 243, 0.4);
-  width: 100%;
-  margin-bottom: 1rem;
-  color: #677788;
-  vertical-align: top;
-  border-color: rgba(231, 234, 243, .7)
+
+// Table
+.thead-light {
+  border-radius: 8px;
+  margin-bottom: 8px;
 }
+
+.thead-light th {
+  background-color: #f8fafd
+}
+
+.table-thead-bordered {
+  border-top: .0625rem solid rgba(231, 234, 243, .7)
+}
+
+.table-nowrap td,
+.table-nowrap th {
+  white-space: nowrap
+}
+
+.main-table thead {
+  background-color: #e9ecef
+}
+
+.main-table thead th {
+  border: 0;
+  padding: 10px;
+}
+
+.main-table thead th:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.main-table thead th:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.main-table tbody tr {
+  background-color: #fff;
+  padding: 5px 0;
+}
+
+.main-table tbody td {
+  vertical-align: middle;
+}
+
+.main-table tbody td:not(:last-child) .table_cell {
+  border-right: 1px solid #757575;
+}
+
+.main-table tbody td:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 6px;
+}
+
+.main-table tbody td:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 6px;
+}
+
+// End Table
 @keyframes alerttt {
-  from { display: block; opacity: 0; }
-  to { opacity: 1; }
+  from {
+    display: block;
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes alerttt {
- from { opacity: 1; }
- to { opacity: 0; display: none; }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    display: none;
+  }
 }
