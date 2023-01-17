@@ -16,9 +16,10 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
 
-  sign(authReq: AuthReq): Observable<AuthReq> {
-    return this.http.post(this.apiUrl + ApiRoutes.Auth.signIn, authReq).pipe(
+  signUp(authReq: AuthReq): Observable<AuthReq> {
+    return this.http.post(this.apiUrl + ApiRoutes.Auth.signUp, authReq).pipe(
       tap((res: any) => {
+        console.log("Token" + res);
         // Save access token on local storage
         localStorage.setItem(LocallyStoredItemsKeys.JWT, res.access_token);
         // Set authenticated user flag

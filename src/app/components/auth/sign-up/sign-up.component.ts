@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,12 +11,17 @@ export class SignUpComponent implements OnInit {
   // UI State
   uiState = {
     isLoading: false,
-    isSubmitting: false
+    isSubmitting: false,
+    isAlertVisiable: false,
+    message: ''
   }
   // Form
   signUpFormGroup: FormGroup
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService
+    ) { }
 
 
   ngOnInit(): void {
@@ -37,11 +43,20 @@ export class SignUpComponent implements OnInit {
   signUp() {
     this.uiState.isLoading = true
     this.uiState.isSubmitting = true
-    console.log(this.signUpFormGroup.invalid)
     if (this.signUpFormGroup.invalid) {
       this.uiState.isLoading = false
       return
     }
+    this.authService.signUp(this.signUpFormGroup.value).subscribe({
+      next:(res) =>{
+        this.uiState.isLoading = false
+      },
+      error:(errors) =>{
+        this.uiState.isLoading = false
+        this.uiState.isAlertVisiable = true,
+        this.uiState.message = errors.UserName
+      }
+    })
   }
 
 }
