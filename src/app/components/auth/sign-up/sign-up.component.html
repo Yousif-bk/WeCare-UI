@@ -100,7 +100,7 @@
                 <span> Confirm password is <strong>required</strong></span>
               </div>
               <div
-                *ngIf="(uiState.isSubmitting && signUpFormGroup.hasError('mismatchedPasswords') || signUpFormGroup.get('password')?.touched && signUpFormGroup.hasError('mismatchedPasswords'))">
+                *ngIf="(uiState.isSubmitting && signUpFormGroup.hasError('mismatch') || signUpFormGroup.get('password')?.touched && signUpFormGroup.hasError('mismatchedPasswords'))">
                 <span class="v-message">Passwords do not match.</span>
               </div>
             </div>
