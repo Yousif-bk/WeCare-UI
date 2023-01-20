@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { matchPassword } from 'src/app/shared/helper/password-validator';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -36,7 +37,7 @@ export class SignUpComponent implements OnInit {
       email: [null, [Validators.required, Validators.pattern(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/),]],
       password: [null, [Validators.required]],
       confirmPassword: [null, [Validators.required]]
-    })
+    },{ validators: matchPassword('password', 'confirmPassword')});
   }
 
 

@@ -61,14 +61,13 @@
             <!-- Form -->
             <div class="mb-4">
               <label class="form-label" for="signupSrEmail">Your email</label>
-              <input type="email" class="form-control form-control-lg" formControlName="email"
-                placeholder="Markwilliams@site.com">
+              <input type="email" class="form-control form-control-lg" formControlName="email" placeholder="Markwilliams@site.com">
               <div class="v-message" *ngIf="(uiState.isSubmitting && signUpFormGroup.get('email')?.hasError('required')
-              || signUpFormGroup.get('email')?.touched && signUpFormGroup.get('email')?.hasError('required'))">
+                          || signUpFormGroup.get('email')?.touched && signUpFormGroup.get('email')?.hasError('required'))">
                 <span> Email is <strong>required</strong></span>
               </div>
               <span *ngIf="uiState.isSubmitting && signUpFormGroup.get('email')?.hasError('pattern')  ||
-            signUpFormGroup.get('email')?.touched && signUpFormGroup.get('email')?.hasError('pattern') ">
+                        signUpFormGroup.get('email')?.touched && signUpFormGroup.get('email')?.hasError('pattern') ">
                 <span class="v-message">Please enter a valid <strong>email address</strong></span>
               </span>
             </div>
@@ -84,7 +83,7 @@
               </div>
               <div class="v-message" *ngIf="(uiState.isSubmitting && signUpFormGroup.get('password')?.hasError('required')
               || signUpFormGroup.get('password')?.touched && signUpFormGroup.get('password')?.hasError('required'))">
-                <span> Last Name is <strong>required</strong></span>
+                <span> Password is <strong>required</strong></span>
               </div>
             </div>
             <!-- End Form -->
@@ -96,8 +95,14 @@
                 <input type="password" class="form-control form-control-lg" formControlName="confirmPassword"
                   placeholder="8+ characters required">
               </div>
-
-              <span class="invalid-feedback">Password does not match the confirm password.</span>
+              <div class="v-message" *ngIf="(uiState.isSubmitting && signUpFormGroup.get('confirmPassword')?.hasError('required')
+                || signUpFormGroup.get('confirmPassword')?.touched && signUpFormGroup.get('confirmPassword')?.hasError('required'))">
+                <span> Confirm password is <strong>required</strong></span>
+              </div>
+              <div
+                *ngIf="(uiState.isSubmitting && signUpFormGroup.hasError('mismatchedPasswords') || signUpFormGroup.get('password')?.touched && signUpFormGroup.hasError('mismatchedPasswords'))">
+                <span class="v-message">Passwords do not match.</span>
+              </div>
             </div>
             <!-- End Form -->
 
