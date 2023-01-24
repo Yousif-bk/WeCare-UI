@@ -7,6 +7,7 @@ export const AppRoutes = {
     main:"auth",
     signIn: {
       main: "sign-in",
+      full: "auth/sign-in",
       sub: ""
   },
   signUp: {

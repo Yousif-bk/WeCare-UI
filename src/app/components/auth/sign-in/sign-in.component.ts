@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToastService } from 'src/app/shared/services/toast.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,8 +16,10 @@ export class SignInComponent implements OnInit {
   // Forms
   signInFormGroup: FormGroup
 
-  constructor(private formBuilder: FormBuilder,
-    public toastService: ToastService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
     this.initeForm()
@@ -38,5 +40,10 @@ export class SignInComponent implements OnInit {
       this.uiState.isLoading = false
       return
     }
+    this.authService.signIn(this.signInFormGroup.value).subscribe(
+      { next: (res)=>{this.uiState.isLoading = false},
+      error: (error)=>{this.uiState.isLoading = false}
+      }
+    )
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Validation from 'src/app/shared/helper/password-validator';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class SignUpComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService
-    ) { }
+  ) { }
 
 
   ngOnInit(): void {
@@ -34,10 +35,12 @@ export class SignUpComponent implements OnInit {
       firstName: [null, [Validators.required]],
       lastName: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.pattern(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/),]],
-      password: [null, [Validators.required]],
+      password: [null, [Validators.required,
+      Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}$")]],
       confirmPassword: [null, [Validators.required]]
+    },{
+      validators: [Validation.match('password', 'confirmPassword')]
     });
-
   }
 
 
@@ -49,19 +52,16 @@ export class SignUpComponent implements OnInit {
       return
     }
     this.authService.signUp(this.signUpFormGroup.value).subscribe({
-      next:(res) =>{
+      next: (res) => {
         this.uiState.isLoading = false
       },
-      error:(errors) =>{
+      error: (errors) => {
         this.uiState.isLoading = false
         this.uiState.isAlertVisiable = true,
-        this.uiState.message = errors.UserName
+          this.uiState.message = errors.UserName
       }
     })
   }
 
-}
-function MatchValidator(arg0: string, arg1: string): any {
-  throw new Error('Function not implemented.');
 }
 
