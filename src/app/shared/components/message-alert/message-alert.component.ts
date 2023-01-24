@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MessageAlertInfo } from '../../model/MessageAlertInfo';
 
 @Component({
   selector: 'app-message-alert',
@@ -6,7 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./message-alert.component.scss']
 })
 export class MessageAlertComponent {
-
-  @Input() isAlertVisiable: boolean;
-
+  @Input() messageAlertInfo: MessageAlertInfo;
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { MessageAlertInfo } from 'src/app/shared/model/MessageAlertInfo';
 
 @Component({
   selector: 'app-landing',
@@ -6,9 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent {
-  isAlertVisiable= false
-
+  messageAlertInfo: MessageAlertInfo
   save(){
-    this.isAlertVisiable = true
+    this.messageAlertInfo = {
+      isAlertVisiable: true,
+      message: "Text Alert",
+      type: "info",
+      icon: "info"
+    }
   }
 }
