@@ -12,12 +12,12 @@ export const routes: Routes = [
   },
   {
     path: AppRoutes.Auth.main,
-    // canActivate: [UnauthGuard],
+    canActivate: [UnauthGuard],
     loadChildren: () => import('../../components/auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: AppRoutes.Home.main,
-    // canActivate:[AuthGuard],
+    canActivate:[AuthGuard],
     loadChildren: () => import('../../components/home/home.module').then(m => m.HomeModule)
   },
   { path: '**', component: PathNotFoundComponent },
