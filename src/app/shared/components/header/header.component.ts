@@ -1,4 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, HostListener, OnInit } from '@angular/core';
+import { AppRoutes } from '../../model/AppRoutes';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +8,10 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  constructor(
+    private router: Router
+  ){}
 
   uiState = {
     isNavbarCollapsed: false,
@@ -30,5 +36,10 @@ export class HeaderComponent implements OnInit {
 
   onSelected(selectedItem:string){
     this.uiState.activeItem = selectedItem
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate([AppRoutes.Auth.signIn.full])
   }
 }

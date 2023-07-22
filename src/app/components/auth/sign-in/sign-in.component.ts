@@ -28,7 +28,8 @@ export class SignInComponent implements OnInit {
   // inite Form
   initeForm() {
     this.signInFormGroup = this.formBuilder.group({
-      email: [null, [Validators.required, Validators.pattern(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/)]],
+      username: [null, [Validators.required]],
+      // email: [null, [Validators.required, Validators.pattern(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/)]],
       password: [null, [Validators.required]]
     })
   }

@@ -31,9 +31,10 @@ export class AuthService {
     return this.http.post(this.apiUrl + ApiRoutes.Auth.signIn, signInReq).pipe(
       tap((res: any) => {
         // Save access token on local storage
-        localStorage.setItem(LocallyStoredItemsKeys.JWT, res.access_token);
+        localStorage.setItem(LocallyStoredItemsKeys.JWT, res.token);
         // Set authenticated user flag
         this.setIsLoggedIn(true);
+        this.router.navigate([AppRoutes.Home.main])
       })
     );
   }
